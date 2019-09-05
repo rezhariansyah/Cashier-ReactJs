@@ -44,7 +44,6 @@ const user = (state = initialState, action) => {
         isRejected: true
       };
     case "GET_ALL_USER_FULFILLED":
-      console.log("BABABA", action.payload.data.result);
       return {
         ...state,
         isLoading: false,

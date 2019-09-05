@@ -6,15 +6,15 @@ class Cart extends Component {
     alert('masuk')
   }
 
-  render() {
-    return (
-      <div className="row">
-        <div className="col-sm-12 text-center">
+  renderCart = () => {
+    let jsx = this.props.cart.map(val => {
+      return (
+        <div className="col-sm-12 text-center mt-4">
           <div className="row">
             <div className="col-md-7 gambar">
               <img
-                src="https://hellosehat.com/wp-content/uploads/2017/09/Minum-Susu-Sapi-Memicu-Kanker.jpg"
-                style={{ width: "180px", borderRadius: "10px" }}
+                src={val.img}
+                style={{ width: "180px", borderRadius: "10px", objectFit: "cover", height: "138px" }}
                 alt=""
                 className="img-fluid image"
               />
@@ -25,8 +25,8 @@ class Cart extends Component {
             <div className="col-md-5">
               <div className="row justify-content-center">
                 <div className="col-md-12">
-                  <h6 style={{ marginBottom: "0px" }}>Nama Barang</h6>
-                  <p style={{ marginBottom: "5px" }}>Rp. 5000</p>
+                  <h6 style={{ marginBottom: "0px" }}>{val.name}</h6>
+                  <p style={{ marginBottom: "5px" }}>Rp. {val.price}</p>
                 </div>
               </div>
               <div className="row justify-content-center">
@@ -62,6 +62,15 @@ class Cart extends Component {
             </div>
           </div>
         </div>
+      )
+    })
+    return jsx
+  }
+
+  render() {
+    return (
+      <div className="row">
+        {this.renderCart()}
       </div>
     );
   }
