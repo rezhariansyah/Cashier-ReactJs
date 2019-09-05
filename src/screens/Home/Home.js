@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import { connect } from "react-redux";
 import { getDataUser } from "../../configs/redux/actions/user";
 import { getAllProduct } from "../../configs/redux/actions/product";
-import { getCartitem } from "../../configs/redux/actions/cart";
+import { getCartitem, addToCart } from "../../configs/redux/actions/cart";
 
 class Home extends Component {
   constructor(props) {
@@ -21,28 +21,24 @@ class Home extends Component {
 
   componentDidMount = async () => {
     await this.props.dispatch(getDataUser());
-    this.setState({ userList: this.props.user });
     await this.getAllProduct();
     await this.getCartItem()
-  };
-
-  getAllProduct = async () => {
-    await this.props.dispatch(getAllProduct());
-    this.setState({
-      productList: this.props.product
-    });
-  };
-
-  getCartItem = async () => {
-    await this.props.dispatch(getCartitem());
-    this.setState({
+    this.setState({ 
+      userList: this.props.user,
+      productList: this.props.product,
       cartList: this.props.cart
     });
   };
 
+  getAllProduct = async () => {
+    await this.props.dispatch(getAllProduct());
+  };
+
+  getCartItem = async () => {
+    await this.props.dispatch(getCartitem());
+  };
+
   render() {
-    console.log("ini product", this.state.productList);
-    console.log("ini cart", this.state.cartList);
     return (
       <Fragment>
         <Header />
@@ -56,7 +52,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="cart-content-wrapper">
-            <Cart cart={this.state.cartList} />
+           {this.state.cartList.length > 0 && <Cart cartHome={this.state.cartList}/>}       
           </div>
         </div>
       </Fragment>

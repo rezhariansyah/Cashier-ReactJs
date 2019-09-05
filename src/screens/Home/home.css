@@ -49,11 +49,6 @@ body {
   box-shadow: 10px 9px 11px -7px rgba(0, 0, 0, 0.42);
 }
 
-.text {
-  font-size: 16px;
-  padding: 16px 32px;
-}
-
 .middle {
   transition: .5s ease;
   opacity: 0;
@@ -86,6 +81,40 @@ body {
 
 .gambar:hover .middle {
   opacity: 1;
+}
+
+/* status cart */
+.gambarCart .imageCart {
+  opacity: 0.3;
+}
+
+.gambarCart .middleCart {
+  opacity: 1;
+}
+
+.gambarCart {
+  position: relative;
+  width: 50%;
+}
+
+.imageCart {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middleCart {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 @media (min-width: 768px) {
