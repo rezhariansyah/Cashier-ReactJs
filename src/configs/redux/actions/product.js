@@ -8,3 +8,9 @@ export const getAllProduct = () => {
     }
 }
 
+export const addItem = (data) => {
+    return {
+        type : "ADD_ITEM",
+        payload : Axios.post(urlApi +'/product', data)
+    }
+}

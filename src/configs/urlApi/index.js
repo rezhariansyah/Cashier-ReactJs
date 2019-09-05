@@ -1,3 +1,3 @@
-const urlApi = 'http://localhost:9000'
+const urlApi = 'https://cashierlkjhg.herokuapp.com'
 
 export default urlApi

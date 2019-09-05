@@ -22,8 +22,8 @@ class Home extends Component {
   componentDidMount = async () => {
     await this.props.dispatch(getDataUser());
     await this.getAllProduct();
-    await this.getCartItem()
-    this.setState({ 
+    await this.getCartItem();
+    this.setState({
       userList: this.props.user,
       productList: this.props.product,
       cartList: this.props.cart
@@ -52,7 +52,16 @@ class Home extends Component {
             </div>
           </div>
           <div className="cart-content-wrapper">
-           {this.state.cartList.length > 0 && <Cart cartHome={this.state.cartList}/>}       
+            {this.state.cartList.length > 0 ? (
+              <Cart cartHome={this.state.cartList} />
+            ) : (
+              <div className="row justify-content-center text-center">
+                <div className="col-12-md">
+                  <img src={require('../../assets/img/food.png')} className="img-fluid" style={{width:"240px"}} alt="..." />
+                  <h5>Empty Cart</h5>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </Fragment>
@@ -64,7 +73,7 @@ const mapStateToProps = state => {
   return {
     user: state.user.userList[0],
     product: state.product.productList,
-    cart : state.cart.cartList
+    cart: state.cart.cartList
   };
 };
 

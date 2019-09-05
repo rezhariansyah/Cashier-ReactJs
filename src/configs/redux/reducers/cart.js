@@ -72,6 +72,28 @@ const cart = (state = initialState, action) => {
         isFulfilled: true,
         cartList: [state.cartList, action.payload.data[0]]
       };
+    // get total cart
+    case "GET_JUMLAH_CART_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+        isFulfilled: false,
+        isRejected: false
+      };
+    case "GET_JUMLAH_CART_REJECTED":
+      return {
+        ...state,
+        isLoading: false,
+        isRejected: true
+      };
+    case "GET_JUMLAH_CART_FULFILLED":
+      console.log(action.payload.data);
+      return {
+        ...state,
+        isLoading: false,
+        isFulfilled: true,
+        cartList: action.payload.data.result
+      };
     default:
       return state;
   }

@@ -8,6 +8,13 @@ export const getCartitem = () => {
     }
 }
 
+export const getJumlahCart = () => {
+    return {
+        type : "GET_JUMLAH_CART",
+        payload : Axios.get(urlApi + '/product/totalCart')
+    }
+}
+
 export const addToCart = (id_product, data) => {
     console.log(data);  
     return {
@@ -22,3 +29,5 @@ export const deleteCartItem = (id_product) => {
         payload : Axios.patch(urlApi + '/product/delete/' + id_product)
     }
 }
+
+
