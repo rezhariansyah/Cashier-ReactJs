@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./home.css";
+import { Redirect } from 'react-router-dom';
 import ProductList from "../../components/ProductList";
 import Cart from "../../components/Cart";
 import Menu from "../../components/Menu";
@@ -41,6 +42,8 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
+       {localStorage.token == undefined ? <Redirect to='/login' /> :
+       <>
         <Header />
         <div className="d-flex" id="wrapper">
           <div className="bg-light border-right" id="sidebar-wrapper">
@@ -64,6 +67,7 @@ class Home extends Component {
             )}
           </div>
         </div>
+        </>}
       </Fragment>
     );
   }

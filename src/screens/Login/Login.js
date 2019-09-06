@@ -3,7 +3,7 @@ import "./login.css";
 import swal from "sweetalert";
 import { connect } from "react-redux";
 import { userLogin } from "../../configs/redux/actions/user";
-
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   login = async () => {
@@ -36,6 +36,8 @@ class Login extends Component {
 
   render() {
     return (
+      <>
+       {localStorage.token != undefined ? <Redirect to='/' /> :
       <div>
         <div className="limiter">
           <div
@@ -87,7 +89,8 @@ class Login extends Component {
           </div>
         </div>
         <div id="dropDownSelect1" />
-      </div>
+      </div>}
+      </>
     );
   }
 }
