@@ -21,7 +21,7 @@ class Cart extends Component {
   deleteCartItem = async id_product => {
     await this.props.dispatch(deleteCartItem(id_product));
     swal({
-      title: "Added to your cart",
+      title: "item removed",
       text: "You clicked the button!",
       icon: "success",
       button: "Okay"
